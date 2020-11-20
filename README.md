@@ -1,7 +1,7 @@
-TypeScript Jest Demo
+TypeScript Jest SpyOn Demo
 ===========================
 
-使用typescript就需要在`jest.config.js`中使用`ts-jest`作为`preset`
+jest的spyOn可以对某个对象的方法进行mock
 
 ```
 npm install
