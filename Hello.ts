@@ -1,11 +1,7 @@
 export class Hello {
 
-  getName() {
-    return 'Jest'
-  }
-
-  sayGreeting() {
-    return `Hello, ${this.getName()}!`;
+  sayGreeting(): string {
+    throw new Error("test-error");
   }
 
 }

@@ -4,14 +4,17 @@ beforeEach(jest.resetAllMocks);
 
 describe('test', () => {
   const hello = new Hello();
-  it('no spy', () => {
-    const greeting = hello.sayGreeting()
-    expect(greeting).toBe('Hello, Jest!');
+
+  it('just track', () => {
+    // just spy to track, but not change the implementation
+    const spiedGreeting = jest.spyOn(hello, 'sayGreeting');
+    expect(() => hello.sayGreeting()).toThrow();
+    expect(spiedGreeting).toBeCalled();
   })
 
-  it('spy', () => {
-    jest.spyOn(hello, 'getName').mockReturnValue('mockedName');
-    const greeting = hello.sayGreeting();
-    expect(greeting).toBe('Hello, mockedName!');
+  it('track and mock', () => {
+    const spiedGreeting = jest.spyOn(hello, 'sayGreeting').mockReturnValue('hello');
+    expect(hello.sayGreeting()).toBe('hello');
+    expect(spiedGreeting).toBeCalled();
   })
 })
